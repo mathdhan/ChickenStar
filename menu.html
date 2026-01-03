@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Chicken Star</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --accent:#4A90E2;
+  --accent-2:rgba(74,144,226,0.12);
+  --muted:#6b6b6b;
+  --maxwidth:1200px;
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:Inter,system-ui,sans-serif;
+  background:#f6f8fb;
+  color:#222;
+  line-height:1.55;
+}
+
+.site{max-width:var(--maxwidth);margin:auto;}
+
+/* ================= TOP BANNER ================= */
+.top-banner{
+  background:#f5f7fb;
+  padding:16px;
+}
+.top-banner-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:16px;
+}
+.promo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:600;
+}
+.promo .tag{
+  background:var(--accent);
+  color:#fff;
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:700;
+}
+.top-actions{display:flex;gap:12px;align-items:center;}
+.order-btn{
+  background:#fff;
+  padding:10px 16px;
+  border-radius:10px;
+  font-weight:700;
+  color:var(--accent);
+  text-decoration:none;
+}
+.social-icons-top img{width:34px;height:34px;}
+
+/* ================= NAV ================= */
+.nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(255,255,255,.85);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(0,0,0,.05);
+}
+.nav-inner{
+  max-width:var(--maxwidth);
+  margin:auto;
+  padding:14px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.left-nav{display:flex;align-items:center;gap:14px;}
+.brand{display:flex;gap:12px;align-items:center;}
+.brand img{width:46px;height:46px;border-radius:10px;}
+.brand .name{font-weight:700;font-size:18px;}
+.brand .tagline{font-size:12px;color:var(--muted);}
+.nav-menu{display:flex;gap:22px;}
+.nav-menu a{
+  text-decoration:none;
+  font-weight:600;
+  color:#111;
+  padding:8px 10px;
+  border-radius:8px;
+}
+.nav-menu a:hover{background:var(--accent-2);}
+.nav-cta .primary{
+  background:linear-gradient(90deg,var(--accent),#6fb3ff);
+  color:#fff;
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:700;
+  text-decoration:none;
+}
+
+/* ================= MOBILE ================= */
+.hamburger{display:none;background:none;border:0;cursor:pointer;}
+.hamburger span{display:block;width:24px;height:2px;background:#111;margin:5px 0;}
+.mobile-menu{
+  display:none;
+  flex-direction:column;
+  background:#fff;
+  border-bottom:1px solid rgba(0,0,0,.08);
+}
+.mobile-menu a{
+  padding:14px 20px;
+  text-decoration:none;
+  color:#111;
+  font-weight:600;
+  border-top:1px solid rgba(0,0,0,.05);
+}
+.mobile-menu a.primary{
+  background:linear-gradient(90deg,var(--accent),#6fb3ff);
+  color:#fff;
+  border-radius:10px;
+  margin:10px 20px;
+  text-align:center;
+  padding:10px 0;
+}
+
+/* ================= HERO ================= */
+.hero{
+  height:70vh;
+  background:url('menu-cover.jpg') center/cover no-repeat;
+  position:relative;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.4);
+}
+.hero-text{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:#fff;
+}
+.hero-text h1{font-size:46px;margin-bottom:10px;}
+.hero-text p{font-size:20px;}
+
+/* ================= SECTIONS ================= */
+.section{
+  padding:80px 20px;
+}
+.section h2{
+  text-align:center;
+  font-size:36px;
+  margin-bottom:40px;
+}
+
+/* ================= DELIVERY ================= */
+.delivery-buttons{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  margin-bottom:60px;
+}
+.delivery-btn{
+  color:#fff;
+  padding:14px 26px;
+  border-radius:12px;
+  font-weight:700;
+  text-decoration:none;
+}
+.justeat{background:#ff8000;}
+.deliveroo{background:#00ccbc;}
+
+/* ================= MENU GRID ================= */
+.menu-grid{
+  max-width:var(--maxwidth);
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+}
+
+.menu-card{
+  background:#fff;
+  border-radius:18px;
+  padding:22px;
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
+  text-align:center;
+  transition: all 0.3s ease;
+}
+.menu-card:hover{
+  transform: translateY(-5px) scale(1.02);
+  box-shadow:0 18px 35px rgba(0,0,0,.12);
+}
+.menu-card img{
+  width:100%;
+  border-radius:14px;
+  margin-bottom:16px;
+}
+.menu-card h3{
+  font-size:22px;
+  margin-bottom:6px;
+}
+.menu-price{
+  font-size:18px;
+  font-weight:700;
+  color:var(--accent);
+  margin-bottom:10px;
+}
+.menu-desc{
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* ================= CTA ================= */
+.cta-strip{
+  background:linear-gradient(90deg,var(--accent),#6fb3ff);
+  color:#fff;
+  text-align:center;
+  padding:70px 20px;
+  border-radius:20px;
+  margin:80px 20px;
+}
+
+/* ================= FOOTER ================= */
+.footer{
+  background:#0f1724;
+  color:#e6eefc;
+  padding:48px 20px;
+  text-align:center;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+  .hero{height:55vh;}
+  .hero-text h1{font-size:32px;}
+  .nav-menu{display:none;}
+  .hamburger{display:block;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BANNER -->
+<div class="top-banner">
+  <div class="top-banner-inner site">
+    <div class="promo">
+      <span class="tag">Yum incoming!</span>
+      <div>Your delicious food is <span style="color:var(--accent)">ready</span>!<br>
+      <small>Fast delivery • Freshly cooked • Open late</small></div>
+    </div>
+    <div class="top-actions">
+      <a href="menu.html" class="order-btn">Order Now</a>
+      <div class="social-icons-top">
+        <img src="instagram.png" alt="Instagram">
+        <img src="facebook.png" alt="Facebook">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <div class="left-nav">
+      <div class="brand">
+        <img src="chicken.png" alt="Chicken Star Logo">
+        <div>
+          <div class="name">Chicken Star</div>
+          <div class="tagline">Fresh, Crispy & Delicious</div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-menu" id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="menu.html">Menu</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+    <div class="nav-cta"><a class="primary" href="menu.html">View Menu</a></div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="menu.html">Menu</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="menu.html" class="primary">View Menu</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>Fresh. Crispy. Delicious.</h1>
+    <p>Premium chicken made fresh every day</p>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="section">
+
+  <div class="delivery-buttons">
+    <a href="#" class="delivery-btn justeat">Order on Just Eat</a>
+    <a href="#" class="delivery-btn deliveroo">Order on Deliveroo</a>
+  </div>
+
+  <h2>Highlights</h2>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <img src="chicken-burger.jpg" alt="Fillet Burger">
+      <h3>Fillet Burger</h3>
+      <div class="menu-price">£4.99</div>
+      <p class="menu-desc">A juicy chicken fillet coated in our signature crispy batter.</p>
+    </div>
+    <div class="menu-card">
+      <img src="chicken-burger.jpg" alt="Fillet Burger">
+      <h3>Fillet Burger</h3>
+      <div class="menu-price">£4.99</div>
+      <p class="menu-desc">A juicy chicken fillet coated in our signature crispy batter.</p>
+    </div>
+    <div class="menu-card">
+      <img src="chicken-burger.jpg" alt="Fillet Burger">
+      <h3>Fillet Burger</h3>
+      <div class="menu-price">£4.99</div>
+      <p class="menu-desc">A juicy chicken fillet coated in our signature crispy batter.</p>
+    </div>
+    <div class="menu-card">
+      <img src="chicken-burger.jpg" alt="Fillet Burger">
+      <h3>Fillet Burger</h3>
+      <div class="menu-price">£4.99</div>
+      <p class="menu-desc">A juicy chicken fillet coated in our signature crispy batter.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- KIDS MEAL -->
+<section class="section">
+  <h2>Kids Meals</h2>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <img src="chicken-burger.jpg" alt="Kids Fillet Burger">
+      <h3>Kids Fillet Burger</h3>
+      <div class="menu-price">£3.49</div>
+      <p class="menu-desc">Perfectly sized crispy chicken fillet for little appetites.</p>
+    </div>
+    <div class="menu-card">
+      <img src="chicken-burger.jpg" alt="Kids Fillet Burger">
+      <h3>Kids Fillet Burger</h3>
+      <div class="menu-price">£3.49</div>
+      <p class="menu-desc">Perfectly sized crispy chicken fillet for little appetites.</p>
+    </div>
+    <div class="menu-card">
+      <img src="chicken-burger.jpg" alt="Kids Fillet Burger">
+      <h3>Kids Fillet Burger</h3>
+      <div class="menu-price">£3.49</div>
+      <p class="menu-desc">Perfectly sized crispy chicken fillet for little appetites.</p>
+    </div>
+    <div class="menu-card">
+      <img src="chicken-burger.jpg" alt="Kids Fillet Burger">
+      <h3>Kids Fillet Burger</h3>
+      <div class="menu-price">£3.49</div>
+      <p class="menu-desc">Perfectly sized crispy chicken fillet for little appetites.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <h2>Hungry Yet?</h2>
+  <p>Order now and enjoy freshly cooked chicken today</p>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <h2>Chicken Star</h2>
+  <p>123 Food Street, London, UK</p>
+  <p>Open: Mon – Sun | 10:00 AM – 11:00 PM</p>
+  <p>© 2025 Chicken Star</p>
+</footer>
+
+<script>
+const hamburger = document.getElementById("hamburger");
+const mobileMenu = document.getElementById("mobileMenu");
+hamburger.addEventListener("click", () => {
+  mobileMenu.style.display = mobileMenu.style.display === "flex" ? "none" : "flex";
+});
+</script>
+
+</body>
+</html>
