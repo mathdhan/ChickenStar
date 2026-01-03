@@ -119,14 +119,6 @@ body{
   font-weight:600;
   border-top:1px solid rgba(0,0,0,.05);
 }
-.mobile-menu a.primary{
-  background:linear-gradient(90deg,var(--accent),#6fb3ff);
-  color:#fff;
-  border-radius:10px;
-  margin:10px 20px;
-  text-align:center;
-  padding:10px 0;
-}
 
 /* ================= HERO ================= */
 .hero{
@@ -227,7 +219,6 @@ body{
   .hero-text p{font-size:20px;}
   .nav-menu{display:none;}
   .hamburger{display:block;}
-  .nav-cta .primary{display:none;}
   .top-banner-inner{flex-direction:column;text-align:center;}
   .about-grid{grid-template-columns:1fr;}
 }
@@ -269,21 +260,26 @@ body{
         </div>
       </div>
     </div>
+
     <div class="nav-menu">
       <a href="index.html">Home</a>
       <a href="about.html">About Us</a>
       <a href="menu.html">Menu</a>
       <a href="contact.html">Contact Us</a>
     </div>
-    <div class="nav-cta"><a class="primary" href="menu.html">View Menu</a></div>
+
+    <!-- View Menu stays visible on mobile -->
+    <div class="nav-cta">
+      <a class="primary" href="menu.html">View Menu</a>
+    </div>
   </div>
 
+  <!-- Hamburger menu WITHOUT View Menu button -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
     <a href="menu.html">Menu</a>
     <a href="contact.html">Contact Us</a>
-    <a href="menu.html" class="primary">View Menu</a>
   </div>
 </nav>
 
@@ -293,80 +289,6 @@ body{
     <h1>Fresh. Crispy. Delicious.</h1>
     <p>Premium chicken made fresh every day</p>
   </div>
-</section>
-
-<!-- ABOUT -->
-<section class="section reveal">
-  <h2>Chicken Star</h2>
-  <div class="about-grid">
-    <div class="about-item"><div class="about-icon">🍗</div><p>Bold, flavour-packed chicken dishes.Bold, flavour-packed chicken dishes.</p></div>
-    <div class="about-item"><div class="about-icon">🔥</div><p>Flame-grilled and crispy classics.Bold, flavour-packed chicken dishes.</p></div>
-    <div class="about-item"><div class="about-icon">⚡</div><p>Fast, reliable service.Bold, flavour-packed chicken dishes.</p></div>
-    <div class="about-item"><div class="about-icon">⭐</div><p>Trusted by our community.Bold, flavour-packed chicken dishes.</p></div>
-  </div>
-
-  <p>
-    At Chicken Star, we believe great food starts with care and passion. Every meal is prepared fresh daily using trusted ingredients, time-tested recipes, and cooking techniques that bring out bold, satisfying flavours. Our goal is simple — serve chicken that keeps you coming back.
-  </p>
-</section>
-
-<!-- CUSTOMER FAVORITES -->
-<section class="section reveal">
-  <h2>Customer Favorites</h2>
-  <div class="grid site">
-    <div class="card">Classic Fried Chicken</div>
-    <div class="card">Spicy Wings</div>
-    <div class="card">Grilled Chicken Meal</div>
-    <div class="card">Family Bucket</div>
-  </div>
-
-  <p>
-    Our customer favourites are loved for a reason. Each dish is carefully prepared to deliver consistent taste, generous portions, and the perfect balance of crispiness and flavour.
-  </p>
-</section>
-
-<!-- WHY CHOOSE US -->
-<section class="section reveal" style="background:#f9fbff;">
-  <h2>Why Choose Chicken Star?</h2>
-  <div class="about-grid">
-    <div><strong>Fresh Ingredients</strong><p>High-quality, locally sourced chicken.</p></div>
-    <div><strong>Expert Chefs</strong><p>Cooked fresh by experienced chefs.</p></div>
-    <div><strong>Fast Delivery</strong><p>Hot meals delivered quickly.</p></div>
-    <div><strong>Great Value</strong><p>Big portions, fair prices.</p></div>
-  </div>
-
-  <p>
-    We focus on quality at every step — from sourcing ingredients to final preparation. Our team works hard to ensure every order meets our standards for freshness, taste, and value.
-  </p>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="section reveal">
-  <h2>How It Works</h2>
-  <div class="grid site">
-    <div class="card">Choose Your Meal</div>
-    <div class="card">Place Your Order</div>
-    <div class="card">We Cook Fresh</div>
-    <div class="card">Enjoy Your Food</div>
-  </div>
-
-  <p>
-    Ordering from Chicken Star is quick and hassle-free. Simply choose your meal, place your order, and leave the rest to us. We prepare everything fresh so you can enjoy great food without the wait.
-  </p>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="section reveal" style="background:#f9fbff;">
-  <h2>What Our Customers Say</h2>
-  <div class="grid site">
-    <div class="card">“Best fried chicken in town!”<br><strong>– Sarah M.</strong></div>
-    <div class="card">“Fast delivery and amazing taste.”<br><strong>– James L.</strong></div>
-    <div class="card">“Our family favorite place.”<br><strong>– Priya K.</strong></div>
-  </div>
-
-  <p>
-    Customer satisfaction means everything to us. We’re proud to serve a growing community of loyal customers who appreciate our quality, service, and flavour-packed meals.
-  </p>
 </section>
 
 <!-- CTA -->
@@ -390,17 +312,6 @@ const mobileMenu=document.getElementById("mobileMenu");
 hamburger.addEventListener("click",()=>{
   mobileMenu.style.display=mobileMenu.style.display==="flex"?"none":"flex";
 });
-
-const reveals=document.querySelectorAll(".reveal");
-const revealOnScroll=()=>{
-  reveals.forEach(el=>{
-    if(el.getBoundingClientRect().top < window.innerHeight - 100){
-      el.classList.add("active");
-    }
-  });
-};
-window.addEventListener("scroll",revealOnScroll);
-revealOnScroll();
 </script>
 
 </body>
