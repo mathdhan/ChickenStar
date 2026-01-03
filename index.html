@@ -169,16 +169,19 @@ body{
   .hero-text p{font-size:20px;}
   .nav-menu{display:none;}
   .hamburger{display:block;}
-  .top-banner-inner{flex-direction:column;text-align:center;}
 
-  /* 🔑 FIX: prevent View Menu from splitting */
-  .nav-inner{
-    flex-wrap:nowrap;
+  /* Banner stacks but stays LEFT aligned */
+  .top-banner-inner{
+    flex-direction:column;
+    align-items:flex-start;
   }
+
+  /* Prevent View Menu wrapping, keep original size */
+  .nav-inner{flex-wrap:nowrap;}
   .nav-cta .primary{
     white-space:nowrap;
-    padding:8px 12px;
-    font-size:14px;
+    padding:10px 14px;
+    font-size:15px;
   }
 }
 </style>
