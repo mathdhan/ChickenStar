@@ -162,8 +162,8 @@ body{
   font-size:18px;
   color:#444;
   max-width:800px;
-  margin:auto;
-  text-align:center;
+  margin:0 auto;
+  text-align:left;
   line-height:1.6;
 }
 
@@ -212,13 +212,65 @@ body{
 }
 
 /* ================= WHY CHOOSE US ================= */
+/* ================= WHY CHOOSE US CARDS ================= */
 .choose-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 300px)); /* Medium card width */
+  justify-content: center; /* Center the cards in the grid */
   gap: 40px;
   text-align: center;
-  margin-bottom:80px;
+  margin-bottom: 80px;
 }
+
+.choose-grid .choose-item {
+  padding: 30px 20px;
+  border-radius: 16px;
+  color: #fff; /* text color for contrast */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); /* subtle shadow */
+}
+
+/* Different background colors for each card */
+.choose-grid .choose-item:nth-child(1) {
+  background: #4A90E2; /* Blue */
+}
+
+.choose-grid .choose-item:nth-child(2) {
+  background: #F5A623; /* Orange */
+}
+
+.choose-grid .choose-item:nth-child(3) {
+  background: #50E3C2; /* Teal */
+}
+
+.choose-grid .choose-item:nth-child(4) {
+  background: #D0021B; /* Red */
+}
+
+/* Hover effect for interactivity */
+.choose-grid .choose-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Headings and text */
+.choose-grid .choose-item h3 {
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.choose-grid .choose-item p {
+  font-size: 16px;
+  color: #fff; /* keep text visible on colored backgrounds */
+  line-height: 1.5;
+}
+
+/* Optional hover effect */
+.choose-grid .choose-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
 
 .choose-item h3 {
   font-size: 20px;
@@ -347,6 +399,10 @@ body{
     <p>
       At Chicken Star, we believe in delivering the freshest, crispiest, and most delicious chicken straight to your table. 
       Our secret recipes, premium ingredients, and passion for quality make every bite a delight. 
+      Whether you dine in, take away, or order online, we promise an unforgettable experience with every meal.At Chicken Star, we believe in delivering the freshest, crispiest, and most delicious chicken straight to your table. 
+      Our secret recipes, premium ingredients, and passion for quality make every bite a delight. 
+      Whether you dine in, take away, or order online, we promise an unforgettable experience with every meal.At Chicken Star, we believe in delivering the freshest, crispiest, and most delicious chicken straight to your table. 
+      Our secret recipes, premium ingredients, and passion for quality make every bite a delight. 
       Whether you dine in, take away, or order online, we promise an unforgettable experience with every meal.
     </p>
   </div>
@@ -358,7 +414,7 @@ body{
     <h2>How We Process</h2>
     <div class="process-steps">
       <div class="step">
-        <img src="icon1.png" alt="Fresh Ingredients" />
+        <img src="icon1.jpg" alt="Fresh Ingredients" />
         <h3>Fresh Ingredients</h3>
         <p>We select only the freshest ingredients to ensure premium quality.</p>
       </div>
