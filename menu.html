@@ -105,7 +105,8 @@ body{
 
 /* ================= MOBILE ================= */
 .hamburger{display:none;background:none;border:0;cursor:pointer;}
-.hamburger span{display:block;width:24px;height:2px;background:#111;margin:5px 0;}.mobile-menu{
+.hamburger span{display:block;width:24px;height:2px;background:#111;margin:5px 0;}
+.mobile-menu{
   display:none;
   flex-direction:column;
   background:#fff;
@@ -113,9 +114,8 @@ body{
 }
 
 /* This makes it visible when "open" class is added */
-.mobile-menu.open{
-  display:flex;
-}.mobile-menu a{
+.mobile-menu.open{display:flex;}
+.mobile-menu a{
   padding:14px 20px;
   text-decoration:none;
   color:#111;
@@ -160,11 +160,6 @@ body{
 .section{
   padding:80px 20px;
 }
-.section h2{
-  text-align:center;
-  font-size:36px;
-  margin-bottom:40px;
-}
 
 /* ================= COLLAPSIBLE ================= */
 .collapsible {
@@ -180,22 +175,13 @@ body{
   border-radius:12px;
   margin-bottom:20px;
   box-shadow:0 6px 20px rgba(0,0,0,.05);
-  transition: all 0.3s ease;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
-.collapsible:hover{
-  background:var(--accent-2);
-}
-.collapsible::after {
-  content: '+';
-  font-size:24px;
-  transition: transform 0.3s;
-}
-.collapsible.active::after {
-  content: '-';
-}
+.collapsible::after { content:'+'; font-size:24px; }
+.collapsible.active::after { content:'-'; }
+
 .collapsible-content {
   max-height:0;
   overflow:hidden;
@@ -243,11 +229,6 @@ body{
   padding:16px;
   box-shadow:0 8px 25px rgba(0,0,0,.08);
   text-align:center;
-  transition: all 0.3s ease;
-}
-.menu-card:hover{
-  transform: translateY(-5px) scale(1.02);
-  box-shadow:0 12px 30px rgba(0,0,0,.12);
 }
 .menu-card img{
   width:100%;
@@ -256,20 +237,9 @@ body{
   border-radius:14px;
   margin-bottom:12px;
 }
-.menu-card h3{
-  font-size:20px;
-  margin-bottom:4px;
-}
-.menu-price{
-  font-size:16px;
-  font-weight:700;
-  color:var(--accent);
-  margin-bottom:6px;
-}
-.menu-desc{
-  color:var(--muted);
-  font-size:13px;
-}
+.menu-card h3{font-size:20px;}
+.menu-price{font-size:16px;font-weight:700;color:var(--accent);}
+.menu-desc{color:var(--muted);font-size:13px;}
 
 /* ================= CTA ================= */
 .cta-strip{
@@ -288,34 +258,18 @@ body{
   padding:48px 20px;
   text-align:center;
 }
-/* ================= RESPONSIVE (MATCH ORIGINAL) ================= */
-@media(max-width:768px){
+
+/* ================= RESPONSIVE FIX (MENU ONLY) ================= */
+@media (max-width:1024px){
+  .menu-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:768px){
+  .menu-grid{grid-template-columns:1fr;}
   .hero{height:55vh;}
   .hero-text h1{font-size:32px;}
-  .hero-text p{font-size:20px;}
   .nav-menu{display:none;}
   .hamburger{display:block;}
-@media (max-width: 768px) {
-  .menu-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-  /* Banner stacks but stays LEFT aligned */
-  .top-banner-inner{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-
-  /* Prevent View Menu wrapping, keep original size */
-  .nav-inner{flex-wrap:nowrap;}
-  .nav-cta .primary{
-    white-space:nowrap;
-    padding:10px 14px;
-    font-size:15px;
-  }
-
+  .top-banner-inner{flex-direction:column;align-items:flex-start;}
 }
 </style>
 </head>
@@ -333,8 +287,8 @@ body{
     <div class="top-actions">
       <a href="menu.html" class="order-btn">Order Now</a>
       <div class="social-icons-top">
-        <img src="instagram.png" alt="Instagram">
-        <img src="facebook.png" alt="Facebook">
+        <img src="instagram.png">
+        <img src="facebook.png">
       </div>
     </div>
   </div>
@@ -344,16 +298,14 @@ body{
 <nav class="nav">
   <div class="nav-inner">
     <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
-    <div class="left-nav">
-      <div class="brand">
-        <img src="chicken.png" alt="Chicken Star Logo">
-        <div>
-          <div class="name">Chicken Star</div>
-          <div class="tagline">Fresh, Crispy & Delicious</div>
-        </div>
+    <div class="brand">
+      <img src="chicken.png">
+      <div>
+        <div class="name">Chicken Star</div>
+        <div class="tagline">Fresh, Crispy & Delicious</div>
       </div>
     </div>
-    <div class="nav-menu" id="navMenu">
+    <div class="nav-menu">
       <a href="index.html">Home</a>
       <a href="about.html">About Us</a>
       <a href="menu.html">Menu</a>
@@ -385,70 +337,27 @@ body{
     <a href="#" class="delivery-btn deliveroo">Order on Deliveroo</a>
   </div>
 
-  <!-- New menu banner -->
   <div class="menu-banner">
-    Take a look at our <span style="color:var(--accent); font-weight:700;">delicious menu</span>!
+    Take a look at our <span style="color:var(--accent);font-weight:700;">delicious menu</span>!
   </div>
 
-  <!-- Highlights Collapsible -->
   <button class="collapsible">Highlights</button>
   <div class="collapsible-content">
     <div class="menu-grid">
-      <div class="menu-card">
-        <img src="chicken-burger.jpg" alt="Fillet Burger">
-        <h3>Fillet Burger</h3>
-        <div class="menu-price">£4.99</div>
-        <p class="menu-desc">Juicy chicken fillet with crispy batter.</p>
-      </div>
-      <div class="menu-card">
-        <img src="chicken-burger.jpg" alt="Chicken Wings">
-        <h3>Chicken Wings</h3>
-        <div class="menu-price">£5.99</div>
-        <p class="menu-desc">Spicy wings, perfect for sharing.</p>
-      </div>
-      <div class="menu-card">
-        <img src="chicken-burger.jpg" alt="Crispy Nuggets">
-        <h3>Crispy Nuggets</h3>
-        <div class="menu-price">£4.49</div>
-        <p class="menu-desc">Golden nuggets, ideal for snacking.</p>
-      </div>
-      <div class="menu-card">
-        <img src="chicken-burger.jpg" alt="Chicken Wrap">
-        <h3>Chicken Wrap</h3>
-        <div class="menu-price">£4.79</div>
-        <p class="menu-desc">Fresh chicken with salad in a soft wrap.</p>
-      </div>
+      <div class="menu-card"><img src="chicken-burger.jpg"><h3>Fillet Burger</h3><div class="menu-price">£4.99</div><p class="menu-desc">Juicy chicken fillet.</p></div>
+      <div class="menu-card"><img src="chicken-burger.jpg"><h3>Chicken Wings</h3><div class="menu-price">£5.99</div><p class="menu-desc">Spicy wings.</p></div>
+      <div class="menu-card"><img src="chicken-burger.jpg"><h3>Nuggets</h3><div class="menu-price">£4.49</div><p class="menu-desc">Golden nuggets.</p></div>
+      <div class="menu-card"><img src="chicken-burger.jpg"><h3>Wrap</h3><div class="menu-price">£4.79</div><p class="menu-desc">Soft chicken wrap.</p></div>
     </div>
   </div>
 
-  <!-- Kids Meals Collapsible -->
   <button class="collapsible">Kids Meals</button>
   <div class="collapsible-content">
     <div class="menu-grid">
-      <div class="menu-card">
-        <img src="chicken-burger.jpg" alt="Kids Fillet Burger">
-        <h3>Kids Fillet Burger</h3>
-        <div class="menu-price">£3.49</div>
-        <p class="menu-desc">Perfect size crispy fillet for kids.</p>
-      </div>
-      <div class="menu-card">
-        <img src="chicken-burger.jpg" alt="Kids Nuggets">
-        <h3>Kids Nuggets</h3>
-        <div class="menu-price">£3.19</div>
-        <p class="menu-desc">Golden nuggets for little hands.</p>
-      </div>
-      <div class="menu-card">
-        <img src="chicken-burger.jpg" alt="Mini Wrap">
-        <h3>Mini Wrap</h3>
-        <div class="menu-price">£3.29</div>
-        <p class="menu-desc">Soft wrap with tender chicken.</p>
-      </div>
-      <div class="menu-card">
-        <img src="chicken-burger.jpg" alt="Kids Fries">
-        <h3>Kids Fries</h3>
-        <div class="menu-price">£1.99</div>
-        <p class="menu-desc">Crispy fries for kids to enjoy.</p>
-      </div>
+      <div class="menu-card"><img src="chicken-burger.jpg"><h3>Kids Burger</h3><div class="menu-price">£3.49</div></div>
+      <div class="menu-card"><img src="chicken-burger.jpg"><h3>Kids Nuggets</h3><div class="menu-price">£3.19</div></div>
+      <div class="menu-card"><img src="chicken-burger.jpg"><h3>Mini Wrap</h3><div class="menu-price">£3.29</div></div>
+      <div class="menu-card"><img src="chicken-burger.jpg"><h3>Kids Fries</h3><div class="menu-price">£1.99</div></div>
     </div>
   </div>
 </section>
@@ -463,34 +372,28 @@ body{
 <footer class="footer">
   <h2>Chicken Star</h2>
   <p>123 Food Street, London, UK</p>
-  <p>Open: Mon – Sun | 10:00 AM – 11:00 PM</p>
   <p>© 2025 Chicken Star</p>
 </footer>
 
 <script>
-// Mobile menu toggle
 const hamburger=document.getElementById("hamburger");
 const mobileMenu=document.getElementById("mobileMenu");
-hamburger.addEventListener("click",()=>{mobileMenu.style.display=mobileMenu.style.display==="flex"?"none":"flex";});
+hamburger.addEventListener("click",()=>{
+  mobileMenu.style.display=mobileMenu.style.display==="flex"?"none":"flex";
+});
 
-
-// Collapsible sections (only one open at a time)
-const collapsibles = document.querySelectorAll(".collapsible");
-collapsibles.forEach(btn => {
-  btn.addEventListener("click", function() {
-    collapsibles.forEach(other => {
-      if(other !== btn){
+const collapsibles=document.querySelectorAll(".collapsible");
+collapsibles.forEach(btn=>{
+  btn.addEventListener("click",function(){
+    collapsibles.forEach(other=>{
+      if(other!==btn){
         other.classList.remove("active");
-        other.nextElementSibling.style.maxHeight = null;
+        other.nextElementSibling.style.maxHeight=null;
       }
     });
     this.classList.toggle("active");
-    const content = this.nextElementSibling;
-    if(content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    }
+    const content=this.nextElementSibling;
+    content.style.maxHeight=content.style.maxHeight?null:content.scrollHeight+"px";
   });
 });
 </script>
