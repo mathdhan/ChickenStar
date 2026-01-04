@@ -103,6 +103,15 @@ body{
   text-decoration:none;
 }
 
+/* ===== FIX: VIEW MENU BUTTON (ADDED) ===== */
+.nav-cta{
+  flex-shrink:0;
+}
+.nav-cta .primary{
+  white-space:nowrap;
+  min-width:fit-content;
+}
+
 /* ================= MOBILE ================= */
 .hamburger{display:none;background:none;border:0;cursor:pointer;}
 .hamburger span{display:block;width:24px;height:2px;background:#111;margin:5px 0;}
@@ -112,8 +121,6 @@ body{
   background:#fff;
   border-bottom:1px solid rgba(0,0,0,.08);
 }
-
-/* This makes it visible when "open" class is added */
 .mobile-menu.open{display:flex;}
 .mobile-menu a{
   padding:14px 20px;
@@ -157,12 +164,10 @@ body{
 .hero-text p{font-size:20px;}
 
 /* ================= SECTIONS ================= */
-.section{
-  padding:80px 20px;
-}
+.section{padding:80px 20px;}
 
 /* ================= COLLAPSIBLE ================= */
-.collapsible {
+.collapsible{
   background:#fff;
   cursor:pointer;
   padding:14px 20px;
@@ -179,13 +184,12 @@ body{
   justify-content:space-between;
   align-items:center;
 }
-.collapsible::after { content:'+'; font-size:24px; }
-.collapsible.active::after { content:'-'; }
-
-.collapsible-content {
+.collapsible::after{content:'+';font-size:24px;}
+.collapsible.active::after{content:'-';}
+.collapsible-content{
   max-height:0;
   overflow:hidden;
-  transition:max-height 0.4s ease;
+  transition:max-height .4s ease;
   margin-bottom:30px;
 }
 
@@ -222,7 +226,6 @@ body{
   grid-template-columns:repeat(4,1fr);
   gap:20px;
 }
-
 .menu-card{
   background:#fff;
   border-radius:18px;
@@ -260,10 +263,10 @@ body{
 }
 
 /* ================= RESPONSIVE FIX (MENU ONLY) ================= */
-@media (max-width:1024px){
+@media(max-width:1024px){
   .menu-grid{grid-template-columns:repeat(2,1fr);}
 }
-@media (max-width:768px){
+@media(max-width:768px){
   .menu-grid{grid-template-columns:1fr;}
   .hero{height:55vh;}
   .hero-text h1{font-size:32px;}
@@ -362,13 +365,11 @@ body{
   </div>
 </section>
 
-<!-- CTA -->
 <div class="cta-strip">
   <h2>Hungry Yet?</h2>
   <p>Order now and enjoy freshly cooked chicken today</p>
 </div>
 
-<!-- FOOTER -->
 <footer class="footer">
   <h2>Chicken Star</h2>
   <p>123 Food Street, London, UK</p>
