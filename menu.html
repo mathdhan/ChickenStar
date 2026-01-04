@@ -105,14 +105,17 @@ body{
 
 /* ================= MOBILE ================= */
 .hamburger{display:none;background:none;border:0;cursor:pointer;}
-.hamburger span{display:block;width:24px;height:2px;background:#111;margin:5px 0;}
-.mobile-menu{
+.hamburger span{display:block;width:24px;height:2px;background:#111;margin:5px 0;}.mobile-menu{
   display:none;
   flex-direction:column;
   background:#fff;
   border-bottom:1px solid rgba(0,0,0,.08);
 }
-.mobile-menu a{
+
+/* This makes it visible when "open" class is added */
+.mobile-menu.open{
+  display:flex;
+}.mobile-menu a{
   padding:14px 20px;
   text-decoration:none;
   color:#111;
@@ -366,7 +369,7 @@ body{
 <!-- MENU -->
 <section class="section">
   <div class="delivery-buttons">
-    <a href="#" class="delivery-btn justeat">Order on Just Eat</a>
+    <a href="#" class="delivery-btn justeat">Order on JustEat</a>
     <a href="#" class="delivery-btn deliveroo">Order on Deliveroo</a>
   </div>
 
