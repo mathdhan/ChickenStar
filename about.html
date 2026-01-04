@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Chicken Star</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --accent:#4A90E2;
+  --accent-2:rgba(74,144,226,0.12);
+  --muted:#6b6b6b;
+  --maxwidth:1200px;
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:Inter,system-ui,sans-serif;
+  background:#f6f8fb;
+  color:#222;
+  line-height:1.55;
+}
+
+.site{max-width:var(--maxwidth);margin:auto;}
+
+/* ================= TOP BANNER ================= */
+.top-banner{
+  background:#f5f7fb;
+  padding:16px;
+}
+.top-banner-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:16px;
+}
+.promo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:600;
+}
+.promo .tag{
+  background:var(--accent);
+  color:#fff;
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:700;
+}
+.top-actions{display:flex;gap:12px;align-items:center;}
+.order-btn{
+  background:#fff;
+  padding:10px 16px;
+  border-radius:10px;
+  font-weight:700;
+  color:var(--accent);
+  text-decoration:none;
+}
+.social-icons-top img{width:34px;height:34px;}
+
+/* ================= NAV ================= */
+.nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(255,255,255,.85);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(0,0,0,.05);
+}
+.nav-inner{
+  max-width:var(--maxwidth);
+  margin:auto;
+  padding:14px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.left-nav{display:flex;align-items:center;gap:14px;}
+.brand{display:flex;gap:12px;align-items:center;}
+.brand img{width:46px;height:46px;border-radius:10px;}
+.brand .name{font-weight:700;font-size:18px;}
+.brand .tagline{font-size:12px;color:var(--muted);}
+.nav-menu{display:flex;gap:22px;}
+.nav-menu a{
+  text-decoration:none;
+  font-weight:600;
+  color:#111;
+  padding:8px 10px;
+  border-radius:8px;
+}
+.nav-menu a:hover{background:var(--accent-2);}
+.nav-cta .primary{
+  background:linear-gradient(90deg,var(--accent),#6fb3ff);
+  color:#fff;
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:700;
+  text-decoration:none;
+}
+
+/* ================= MOBILE MENU ================= */
+.hamburger{display:none;background:none;border:0;cursor:pointer;}
+.hamburger span{display:block;width:24px;height:2px;background:#111;margin:5px 0;}
+.mobile-menu{
+  display:none;
+  flex-direction:column;
+  background:#fff;
+  border-bottom:1px solid rgba(0,0,0,.08);
+}
+.mobile-menu a{
+  padding:14px 20px;
+  text-decoration:none;
+  color:#111;
+  font-weight:600;
+  border-top:1px solid rgba(0,0,0,.05);
+}
+
+/* ================= HERO ================= */
+.hero{
+  height:70vh;
+  background:url('hand.jpg') center/cover no-repeat;
+  position:relative;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.4);
+}
+.hero-text{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:#fff;
+  padding:0 16px;
+}
+.hero-text h1{font-size:46px;margin-bottom:10px;}
+.hero-text p{font-size:20px;}
+
+
+/* ================= ABOUT SECTION ================= */
+.about-section{
+  background:#eef2f8;
+  padding:90px 20px;
+}
+
+.about-inner{
+  max-width:var(--maxwidth);
+  margin:auto;
+  display:flex;
+  align-items:center;
+  gap:56px;
+}
+
+.about-image{
+  flex:1;
+  text-align:center;
+}
+
+.about-image img{
+  width:100%;
+  max-width:460px;
+  border-radius:22px;
+}
+
+.about-text{
+  flex:1;
+  text-align:center;
+}
+
+.about-text h2{
+  font-size:36px;
+  margin-bottom:18px;
+}
+
+.about-text p{
+  color:var(--muted);
+  font-size:16px;
+  margin:0 auto 18px;
+  max-width:560px;
+}
+
+.about-highlights{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  flex-wrap:wrap;
+  margin-top:28px;
+}
+
+.about-card{
+  background:#ffffff;
+  padding:18px 22px;
+  border-radius:16px;
+  min-width:160px;
+}
+
+.about-card strong{
+  display:block;
+  font-size:17px;
+  margin-bottom:6px;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+  .about-inner{
+    flex-direction:column;
+  }
+
+  .about-image img{
+    max-width:100%;
+  }
+}
+
+/* ================= OUR STORY ================= */
+.story-section{
+  padding:90px 20px;
+  background:#ffffff;
+}
+
+.story-inner{
+  max-width:800px;
+  margin:auto;
+  text-align:center;
+}
+
+.story-inner h2{
+  font-size:34px;
+  margin-bottom:20px;
+}
+
+.story-inner p{
+  font-size:16px;
+  color:var(--muted);
+  margin-bottom:18px;
+  line-height:1.7;
+}
+
+/* ===== OUR STORY FADE-IN ANIMATION ===== */
+.story-section{
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity 0.8s ease, transform 0.8s ease;
+}
+
+.story-section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ================= CTA & FOOTER ================= */
+.cta-strip{
+  background:linear-gradient(90deg,var(--accent),#6fb3ff);
+  color:#fff;
+  text-align:center;
+  padding:70px 20px;
+  border-radius:20px;
+  margin:80px 20px;
+}
+.footer{
+  background:#0f1724;
+  color:#e6eefc;
+  padding:48px 20px;
+  text-align:center;
+}
+
+/* ================= RESPONSIVE (MATCH ORIGINAL) ================= */
+@media(max-width:768px){
+  .hero{height:55vh;}
+  .hero-text h1{font-size:32px;}
+  .hero-text p{font-size:20px;}
+  .nav-menu{display:none;}
+  .hamburger{display:block;}
+
+  /* Banner stacks but stays LEFT aligned */
+  .top-banner-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  /* Prevent View Menu wrapping, keep original size */
+  .nav-inner{flex-wrap:nowrap;}
+  .nav-cta .primary{
+    white-space:nowrap;
+    padding:10px 14px;
+    font-size:15px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BANNER -->
+<div class="top-banner">
+  <div class="top-banner-inner site">
+    <div class="promo">
+      <span class="tag">Yum incoming!</span>
+      <div>
+        <div>Your delicious food is <span style="color:var(--accent)">ready</span>!</div>
+        <small>Fast delivery • Freshly cooked • Open late</small>
+      </div>
+    </div>
+    <div class="top-actions">
+      <a href="menu.html" class="order-btn">Order Now</a>
+      <div class="social-icons-top">
+        <img src="instagram.png" alt="Instagram">
+        <img src="facebook.png" alt="Facebook">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="left-nav">
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      <div class="brand">
+        <img src="chicken.png" alt="Chicken Star Logo">
+        <div>
+          <div class="name">Chicken Star</div>
+          <div class="tagline">Fresh, Crispy & Delicious</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="menu.html">Menu</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+
+    <div class="nav-cta">
+      <a class="primary" href="menu.html">View Menu</a>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="menu.html">Menu</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>Fresh. Crispy. Delicious.</h1>
+    <p>Premium chicken made fresh every day</p>
+  </div>
+</section>
+<!-- ABOUT CHICKEN STAR -->
+<section class="about-section">
+  <div class="about-inner">
+
+    <div class="about-text">
+      <h2>About Chicken Star</h2>
+      <p>
+        Chicken Star is all about serving fresh, flavorful, and perfectly crispy chicken
+        made with passion. Every meal is prepared fresh daily using carefully selected
+        ingredients and our signature seasoning.
+      </p>
+      <p>
+        Whether you're dining in, grabbing a takeaway, or ordering online, we’re committed
+        to delivering great taste, fast service, and a memorable food experience every time.
+      </p>
+
+      <div class="about-highlights">
+        <div class="about-card">
+          <strong>Fresh Daily</strong>
+          Cooked every day
+        </div>
+        <div class="about-card">
+          <strong>Quality Ingredients</strong>
+          Carefully selected
+        </div>
+        <div class="about-card">
+          <strong>Fast Service</strong>
+          Friendly & reliable
+        </div>
+      </div>
+    </div>
+
+    <div class="about-image">
+      <img src="bbq-chicken.jpg" alt="About Chicken Star">
+    </div>
+
+  </div>
+</section>
+
+<!-- OUR STORY -->
+<section class="story-section">
+  <div class="story-inner">
+    <h2>Our Story</h2>
+    <p>
+      Chicken Star started with a simple idea — to serve chicken that people would
+      genuinely crave. What began as a small kitchen quickly grew into a local favorite
+      thanks to our commitment to quality, consistency, and flavor.
+    </p>
+    <p>
+      We believe great food brings people together. That’s why every recipe we serve
+      is carefully developed, tested, and perfected to ensure every bite delivers
+      bold taste and satisfying crunch.
+    </p>
+    <p>
+      Today, Chicken Star continues to grow, but our mission remains the same:
+      serve fresh food, treat customers like family, and never compromise on quality.
+    </p>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<div class="cta-strip">
+  <h2>Hungry Yet?</h2>
+  <p>Order now and enjoy freshly cooked chicken today</p>
+  <p>Dine in, take away, or order online — the choice is yours.</p>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <h2>Chicken Star</h2>
+  <p>123 Food Street, London, UK</p>
+  <p>Open: Mon – Sun | 10:00 AM – 11:00 PM</p>
+  <p>© 2025 Chicken Star</p>
+</footer>
+
+<script>
+const hamburger=document.getElementById("hamburger");
+const mobileMenu=document.getElementById("mobileMenu");
+hamburger.addEventListener("click",()=>{
+  mobileMenu.style.display=mobileMenu.style.display==="flex"?"none":"flex";
+});
+
+/* ===== OUR STORY FADE-IN ===== */
+const storySection = document.querySelector('.story-section');
+
+const storyObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+      }
+    });
+  },
+  { threshold: 0.2 }
+);
+
+if(storySection){
+  storyObserver.observe(storySection);
+}
+</script>
+
+</body>
+</html>
