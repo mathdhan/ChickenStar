@@ -146,6 +146,90 @@ body{
 .hero-text h1{font-size:46px;margin-bottom:10px;}
 .hero-text p{font-size:20px;}
 
+/* ================= INTRODUCTION ================= */
+.introduction {
+  padding:80px 20px;
+  background:#fff;
+}
+.introduction h2 {
+  font-size:32px;
+  font-weight:700;
+  text-align:center;
+  margin-bottom:30px;
+  color:#111;
+}
+.introduction p {
+  font-size:18px;
+  color:#444;
+  max-width:800px;
+  margin:auto;
+  text-align:center;
+  line-height:1.6;
+}
+
+/* ================= HOW WE PROCESS ================= */
+.section h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom:40px;
+  text-align:center;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  text-align: center;
+  margin-bottom:80px;
+}
+
+.process-steps .step {
+  opacity:0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.process-steps .step.visible {
+  opacity:1;
+  transform: translateY(0);
+}
+
+.process-steps .step img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 16px;
+}
+
+.process-steps .step h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.process-steps .step p {
+  font-size: 16px;
+  color: var(--muted);
+}
+
+/* ================= WHY CHOOSE US ================= */
+.choose-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  text-align: center;
+  margin-bottom:80px;
+}
+
+.choose-item h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.choose-item p {
+  font-size: 16px;
+  color: var(--muted);
+}
+
 /* ================= CTA & FOOTER ================= */
 .cta-strip{
   background:linear-gradient(90deg,var(--accent),#6fb3ff);
@@ -182,6 +266,11 @@ body{
     white-space:nowrap;
     padding:10px 14px;
     font-size:15px;
+  }
+
+  .process-steps, .choose-grid {
+    grid-template-columns: 1fr;
+    gap:30px;
   }
 }
 </style>
@@ -251,6 +340,72 @@ body{
   </div>
 </section>
 
+<!-- INTRODUCTION -->
+<section class="introduction">
+  <div class="site">
+    <h2>Welcome to Chicken Star</h2>
+    <p>
+      At Chicken Star, we believe in delivering the freshest, crispiest, and most delicious chicken straight to your table. 
+      Our secret recipes, premium ingredients, and passion for quality make every bite a delight. 
+      Whether you dine in, take away, or order online, we promise an unforgettable experience with every meal.
+    </p>
+  </div>
+</section>
+
+<!-- HOW WE PROCESS -->
+<section class="process section">
+  <div class="site">
+    <h2>How We Process</h2>
+    <div class="process-steps">
+      <div class="step">
+        <img src="icon1.png" alt="Fresh Ingredients" />
+        <h3>Fresh Ingredients</h3>
+        <p>We select only the freshest ingredients to ensure premium quality.</p>
+      </div>
+      <div class="step">
+        <img src="icon2.png" alt="Careful Marination" />
+        <h3>Careful Marination</h3>
+        <p>Each piece is marinated with our secret blend for maximum flavor.</p>
+      </div>
+      <div class="step">
+        <img src="icon3.png" alt="Perfectly Cooked" />
+        <h3>Perfectly Cooked</h3>
+        <p>Cooked to golden perfection using precise techniques.</p>
+      </div>
+      <div class="step">
+        <img src="icon4.png" alt="Fast Delivery" />
+        <h3>Fast Delivery</h3>
+        <p>Hot and fresh straight to your door or ready for dine-in.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="why-choose section" style="background:#f5f7fb; padding:80px 0;">
+  <div class="site">
+    <h2>Why Choose Us</h2>
+    <div class="choose-grid">
+      <div class="choose-item">
+        <h3>Quality Ingredients</h3>
+        <p>Only the freshest, top-quality chicken and produce are used.</p>
+      </div>
+      <div class="choose-item">
+        <h3>Fast Service</h3>
+        <p>Quick, reliable delivery and prompt service every time.</p>
+      </div>
+      <div class="choose-item">
+        <h3>Affordable Prices</h3>
+        <p>Delicious meals without breaking the bank.</p>
+      </div>
+      <div class="choose-item">
+        <h3>Customer Satisfaction</h3>
+        <p>We go above and beyond to make every customer happy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <div class="cta-strip">
   <h2>Hungry Yet?</h2>
@@ -267,11 +422,22 @@ body{
 </footer>
 
 <script>
+// Mobile menu toggle
 const hamburger=document.getElementById("hamburger");
 const mobileMenu=document.getElementById("mobileMenu");
-hamburger.addEventListener("click",()=>{
-  mobileMenu.style.display=mobileMenu.style.display==="flex"?"none":"flex";
-});
+hamburger.addEventListener("click",()=>{mobileMenu.style.display=mobileMenu.style.display==="flex"?"none":"flex";});
+
+// Animate "How We Process" steps on scroll
+const steps = document.querySelectorAll('.process-steps .step');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+},{threshold:0.3});
+
+steps.forEach(step => observer.observe(step));
 </script>
 
 </body>
