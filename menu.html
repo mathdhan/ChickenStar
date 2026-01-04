@@ -163,12 +163,49 @@ body{
   margin-bottom:40px;
 }
 
+/* ================= COLLAPSIBLE ================= */
+.collapsible {
+  background:#fff;
+  cursor:pointer;
+  padding:14px 20px;
+  width:100%;
+  border:none;
+  outline:none;
+  text-align:left;
+  font-size:24px;
+  font-weight:700;
+  border-radius:12px;
+  margin-bottom:20px;
+  box-shadow:0 6px 20px rgba(0,0,0,.05);
+  transition: all 0.3s ease;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.collapsible:hover{
+  background:var(--accent-2);
+}
+.collapsible::after {
+  content: '+';
+  font-size:24px;
+  transition: transform 0.3s;
+}
+.collapsible.active::after {
+  content: '-';
+}
+.collapsible-content {
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.4s ease;
+  margin-bottom:30px;
+}
+
 /* ================= DELIVERY ================= */
 .delivery-buttons{
   display:flex;
   justify-content:center;
   gap:16px;
-  margin-bottom:60px;
+  margin-bottom:20px;
 }
 .delivery-btn{
   color:#fff;
@@ -180,45 +217,55 @@ body{
 .justeat{background:#ff8000;}
 .deliveroo{background:#00ccbc;}
 
+/* ================= MENU BANNER ================= */
+.menu-banner{
+  text-align:center;
+  font-size:18px;
+  color:var(--muted);
+  margin:20px 0 40px;
+}
+
 /* ================= MENU GRID ================= */
 .menu-grid{
   max-width:var(--maxwidth);
   margin:auto;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:24px;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
 }
 
 .menu-card{
   background:#fff;
   border-radius:18px;
-  padding:22px;
-  box-shadow:0 12px 30px rgba(0,0,0,.08);
+  padding:16px;
+  box-shadow:0 8px 25px rgba(0,0,0,.08);
   text-align:center;
   transition: all 0.3s ease;
 }
 .menu-card:hover{
   transform: translateY(-5px) scale(1.02);
-  box-shadow:0 18px 35px rgba(0,0,0,.12);
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
 }
 .menu-card img{
   width:100%;
+  height:150px;
+  object-fit:cover;
   border-radius:14px;
-  margin-bottom:16px;
+  margin-bottom:12px;
 }
 .menu-card h3{
-  font-size:22px;
-  margin-bottom:6px;
+  font-size:20px;
+  margin-bottom:4px;
 }
 .menu-price{
-  font-size:18px;
+  font-size:16px;
   font-weight:700;
   color:var(--accent);
-  margin-bottom:10px;
+  margin-bottom:6px;
 }
 .menu-desc{
   color:var(--muted);
-  font-size:14px;
+  font-size:13px;
 }
 
 /* ================= CTA ================= */
@@ -240,11 +287,20 @@ body{
 }
 
 /* ================= RESPONSIVE ================= */
+@media(max-width:1024px){
+  .menu-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
 @media(max-width:768px){
   .hero{height:55vh;}
   .hero-text h1{font-size:32px;}
   .nav-menu{display:none;}
   .hamburger{display:block;}
+  .menu-grid{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 </head>
@@ -296,7 +352,6 @@ body{
     <a href="about.html">About Us</a>
     <a href="menu.html">Menu</a>
     <a href="contact.html">Contact Us</a>
-  
   </div>
 </nav>
 
@@ -310,69 +365,75 @@ body{
 
 <!-- MENU -->
 <section class="section">
-
   <div class="delivery-buttons">
-    <a href="#" class="delivery-btn justeat">Order on JustEat</a>
+    <a href="#" class="delivery-btn justeat">Order on Just Eat</a>
     <a href="#" class="delivery-btn deliveroo">Order on Deliveroo</a>
   </div>
 
-  <h2>Highlights</h2>
-  <div class="menu-grid">
-    <div class="menu-card">
-      <img src="chicken-burger.jpg" alt="Fillet Burger">
-      <h3>Fillet Burger</h3>
-      <div class="menu-price">£4.99</div>
-      <p class="menu-desc">A juicy chicken fillet coated in our signature crispy batter.</p>
-    </div>
-    <div class="menu-card">
-      <img src="chicken-burger.jpg" alt="Fillet Burger">
-      <h3>Fillet Burger</h3>
-      <div class="menu-price">£4.99</div>
-      <p class="menu-desc">A juicy chicken fillet coated in our signature crispy batter.</p>
-    </div>
-    <div class="menu-card">
-      <img src="chicken-burger.jpg" alt="Fillet Burger">
-      <h3>Fillet Burger</h3>
-      <div class="menu-price">£4.99</div>
-      <p class="menu-desc">A juicy chicken fillet coated in our signature crispy batter.</p>
-    </div>
-    <div class="menu-card">
-      <img src="chicken-burger.jpg" alt="Fillet Burger">
-      <h3>Fillet Burger</h3>
-      <div class="menu-price">£4.99</div>
-      <p class="menu-desc">A juicy chicken fillet coated in our signature crispy batter.</p>
+  <!-- New menu banner -->
+  <div class="menu-banner">
+    Take a look at our <span style="color:var(--accent); font-weight:700;">delicious menu</span>!
+  </div>
+
+  <!-- Highlights Collapsible -->
+  <button class="collapsible">Highlights</button>
+  <div class="collapsible-content">
+    <div class="menu-grid">
+      <div class="menu-card">
+        <img src="chicken-burger.jpg" alt="Fillet Burger">
+        <h3>Fillet Burger</h3>
+        <div class="menu-price">£4.99</div>
+        <p class="menu-desc">Juicy chicken fillet with crispy batter.</p>
+      </div>
+      <div class="menu-card">
+        <img src="chicken-burger.jpg" alt="Chicken Wings">
+        <h3>Chicken Wings</h3>
+        <div class="menu-price">£5.99</div>
+        <p class="menu-desc">Spicy wings, perfect for sharing.</p>
+      </div>
+      <div class="menu-card">
+        <img src="chicken-burger.jpg" alt="Crispy Nuggets">
+        <h3>Crispy Nuggets</h3>
+        <div class="menu-price">£4.49</div>
+        <p class="menu-desc">Golden nuggets, ideal for snacking.</p>
+      </div>
+      <div class="menu-card">
+        <img src="chicken-burger.jpg" alt="Chicken Wrap">
+        <h3>Chicken Wrap</h3>
+        <div class="menu-price">£4.79</div>
+        <p class="menu-desc">Fresh chicken with salad in a soft wrap.</p>
+      </div>
     </div>
   </div>
 
-</section>
-
-<!-- KIDS MEAL -->
-<section class="section">
-  <h2>Kids Meals</h2>
-  <div class="menu-grid">
-    <div class="menu-card">
-      <img src="chicken-burger.jpg" alt="Kids Fillet Burger">
-      <h3>Kids Fillet Burger</h3>
-      <div class="menu-price">£3.49</div>
-      <p class="menu-desc">Perfectly sized crispy chicken fillet for little appetites.</p>
-    </div>
-    <div class="menu-card">
-      <img src="chicken-burger.jpg" alt="Kids Fillet Burger">
-      <h3>Kids Fillet Burger</h3>
-      <div class="menu-price">£3.49</div>
-      <p class="menu-desc">Perfectly sized crispy chicken fillet for little appetites.</p>
-    </div>
-    <div class="menu-card">
-      <img src="chicken-burger.jpg" alt="Kids Fillet Burger">
-      <h3>Kids Fillet Burger</h3>
-      <div class="menu-price">£3.49</div>
-      <p class="menu-desc">Perfectly sized crispy chicken fillet for little appetites.</p>
-    </div>
-    <div class="menu-card">
-      <img src="chicken-burger.jpg" alt="Kids Fillet Burger">
-      <h3>Kids Fillet Burger</h3>
-      <div class="menu-price">£3.49</div>
-      <p class="menu-desc">Perfectly sized crispy chicken fillet for little appetites.</p>
+  <!-- Kids Meals Collapsible -->
+  <button class="collapsible">Kids Meals</button>
+  <div class="collapsible-content">
+    <div class="menu-grid">
+      <div class="menu-card">
+        <img src="chicken-burger.jpg" alt="Kids Fillet Burger">
+        <h3>Kids Fillet Burger</h3>
+        <div class="menu-price">£3.49</div>
+        <p class="menu-desc">Perfect size crispy fillet for kids.</p>
+      </div>
+      <div class="menu-card">
+        <img src="chicken-burger.jpg" alt="Kids Nuggets">
+        <h3>Kids Nuggets</h3>
+        <div class="menu-price">£3.19</div>
+        <p class="menu-desc">Golden nuggets for little hands.</p>
+      </div>
+      <div class="menu-card">
+        <img src="chicken-burger.jpg" alt="Mini Wrap">
+        <h3>Mini Wrap</h3>
+        <div class="menu-price">£3.29</div>
+        <p class="menu-desc">Soft wrap with tender chicken.</p>
+      </div>
+      <div class="menu-card">
+        <img src="chicken-burger.jpg" alt="Kids Fries">
+        <h3>Kids Fries</h3>
+        <div class="menu-price">£1.99</div>
+        <p class="menu-desc">Crispy fries for kids to enjoy.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -392,15 +453,33 @@ body{
 </footer>
 
 <script>
+// Mobile menu toggle
 const hamburger = document.getElementById("hamburger");
 const mobileMenu = document.getElementById("mobileMenu");
 hamburger.addEventListener("click", () => {
-  mobileMenu.style.display = mobileMenu.style.display === "flex" ? "none" : "flex";
+  mobileMenu.classList.toggle("open");
+});
+
+// Collapsible sections (only one open at a time)
+const collapsibles = document.querySelectorAll(".collapsible");
+collapsibles.forEach(btn => {
+  btn.addEventListener("click", function() {
+    collapsibles.forEach(other => {
+      if(other !== btn){
+        other.classList.remove("active");
+        other.nextElementSibling.style.maxHeight = null;
+      }
+    });
+    this.classList.toggle("active");
+    const content = this.nextElementSibling;
+    if(content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
 });
 </script>
 
 </body>
 </html>
-
-
-
